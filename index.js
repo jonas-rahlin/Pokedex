@@ -1,9 +1,8 @@
 const pokedex = document.querySelector("#pokedex");
 
-
 const fetchPokemon = () => {
     const promises = [];
-    for(let i = 1; i <= 150; i++ ){
+    for(let i = 1; i <= 151; i++ ){
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         promises.push(fetch(url).then((res) => res.json()));
     }
@@ -24,11 +23,14 @@ const displayPokemon = (pokemon) => {
     const pokemonHTMLString = pokemon.map(pokeman =>
         `<li>
             <img src = "${pokeman.image}"/>
-            <h2>#${pokeman.id}. ${pokeman.name}</h2>
+            <h2>#${pokeman.id}<br> ${pokeman.name}</h2>
             <p>${pokeman.type}</p>
         </li>`
         ).join("");
-    pokedex.innerHTML = pokemonHTMLString;
+    pokedex.innerHTML = pokemonHTMLString;   
 }
 
 fetchPokemon();
+
+
+
